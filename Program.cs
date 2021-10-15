@@ -28,8 +28,12 @@ static string NumberToWords(int value) => value switch
     >= 100 and <= 999 => $"{NumberToWords(value / 100)} hundred{(value % 100 <= 0 ? string.Empty : $" {NumberToWords(value % 100)}")}",
     >= 1_000 and <= 999_999 => $"{NumberToWords(value / 1_000)} thousand{(value % 1_000 <= 0 ? string.Empty : $" {NumberToWords(value % 1000)}")}",
     >= 1_000_000 and <= 999_999_999 => $"{NumberToWords(value / 1_000_000)} million{(value % 1_000_000 <= 0 ? string.Empty : $" {NumberToWords(value % 1_000_000)}")}",
+    >= 1_000_000_000 and <= int.MaxValue => $"{NumberToWords(value / 1_000_000_000)} billion{(value % 1_000_000_000 <= 0 ? string.Empty : $" {NumberToWords(value % 1_000_000_000)}")}",
     _ => throw new Exception($"Value should be between {-999_999_999} and {999_999_999}")
 };
+
+static string GetN2W(int value, int div, string suffix) =>
+    $"{NumberToWords(value / div)} {suffix}{(value % div <= 0 ? string.Empty : $" {NumberToWords(value % div)}")}";
 
 // These values are also stored in a dictionary
 static string GetTensSuffixName(int value) => value switch
