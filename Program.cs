@@ -1,4 +1,4 @@
-﻿Write($"Type a integer number between: {-999_999_999} and {999_999_999}: ");
+﻿Write($"Type a integer number between: {int.MinValue + 1} and {int.MaxValue}: ");
 WriteLine(AsWords(int.Parse(ReadLine())));
 
 // Mambo starts here --->
