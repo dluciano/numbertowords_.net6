@@ -6,10 +6,15 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+
 	<ItemGroup>
-		<Using Include="System"/>
-		<Using Include="System.Console" Static="True"/>
-		<Using Include="System.Environment" Alias="E"/>
+	  <None Remove=".gitattributes" />
+	  <None Remove=".gitignore" />
+	</ItemGroup>
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Console" Static="True" />
+		<Using Include="System.Environment" Alias="E" />
 	</ItemGroup>
 
 </Project>
