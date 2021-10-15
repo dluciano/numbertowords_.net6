@@ -25,11 +25,11 @@ static string NumberToWords(int value) => value switch
     15 => "fithteen",
     > 16 and <= 19 => $"{NumberToWords(value % 10)}teen",
     >= 20 and <= 99 => $"{GetTensSuffixName(value / 10)}{(value % 10 == 0 ? string.Empty : $"-{NumberToWords(value % 10)}")}",
-    >= 100 and <= 999 => $"{NumberToWords(value / 100)} hundred{(value % 100 <= 0 ? string.Empty : $" {NumberToWords(value % 100)}")}",
-    >= 1_000 and <= 999_999 => $"{NumberToWords(value / 1_000)} thousand{(value % 1_000 <= 0 ? string.Empty : $" {NumberToWords(value % 1000)}")}",
-    >= 1_000_000 and <= 999_999_999 => $"{NumberToWords(value / 1_000_000)} million{(value % 1_000_000 <= 0 ? string.Empty : $" {NumberToWords(value % 1_000_000)}")}",
-    >= 1_000_000_000 and <= int.MaxValue => $"{NumberToWords(value / 1_000_000_000)} billion{(value % 1_000_000_000 <= 0 ? string.Empty : $" {NumberToWords(value % 1_000_000_000)}")}",
-    _ => throw new Exception($"Value should be between {-999_999_999} and {999_999_999}")
+    >= 100 and <= 999 => GetN2W(value, 100, "hundred"),
+    >= 1_000 and <= 999_999 => GetN2W(value, 1_000, "thousand"),
+    >= 1_000_000 and <= 999_999_999 => GetN2W(value, 1_000_000, "million"),
+    >= 1_000_000_000 and <= int.MaxValue => GetN2W(value, 1_000_000_000, "billion"),
+    _ => throw new Exception($"Value should be between -{int.MaxValue} and +{int.MaxValue}")
 };
 
 static string GetN2W(int value, int div, string suffix) =>
